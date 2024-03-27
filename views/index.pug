@@ -3,3 +3,18 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  p Rakesh Page   
+  br
+  button#button(onclick="double()") button 
+  p
+    div(id='double') Two to the power value #{power} is #{value}.
+  script.
+    console.log("running on http://localhost:3000/")
+  script.
+    var value = 0;
+    var power = 1;
+    function double() {
+      value += 1;
+      power *= 2;
+      document.getElementById('double').innerText = "Two to the power " + power + " is " + value + ".";
+    }
