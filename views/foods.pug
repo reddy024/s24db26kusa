@@ -1,13 +1,12 @@
 extends layout
 
 block content
-  h1= title
+  h1 Searching for foods
   .container-fluid
     .row
       -
       for food in foods 
         .col-sm-2
           h3= `Name: ${food.name}`
-          p= `category: ${food.category}`
-          p= `price: ${food.price}`
-  
+          p= `Category: ${food.category}`
+          p= `Price: ${food.price}`
