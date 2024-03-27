@@ -6,8 +6,8 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-const foodsRouter = require('./routes/foods');
-const gridRouter = require('.routes/grid');
+var foodsRouter = require('./routes/foods');
+var gridRouter = require('./routes/grid');
 
 
 var app = express();

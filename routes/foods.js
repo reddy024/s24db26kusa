@@ -1,5 +1,5 @@
-const express = require('express');
-const router = express.Router();
+var express = require('express');
+var router = express.Router();
 
 const foods = [
   { name: 'biryani', category: 'meals', price: '500' },
@@ -8,7 +8,7 @@ const foods = [
 ];
 
 router.get('/', (req, res) => {
-  res.render('foods', { title: 'Searching for Foods', foods });
+  res.render('foods', { title: 'Search results', foods });
 });
 
 module.exports = router;

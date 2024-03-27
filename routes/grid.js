@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
-
-router.get('/gridbuild', (req, res) => {
-  let query = req.query;
+ 
+/* GET grid page. */
+router.get('/', function(req, res, next) {
+  const query = req.query;
   console.log(`rows ${query.rows}`);
   console.log(`cols ${query.cols}`);
-  res.render('grid', { title: 'Grid Display', query: query });
+  res.render('grid', { title2: 'Grid', query: req.query });
 });
-
+ 
 module.exports = router;

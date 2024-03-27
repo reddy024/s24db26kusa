@@ -1,24 +1,20 @@
 extends layout
-
+ 
 block content
-  h1= title
-  p Query parameters:
-    | Rows: #{query.rows}
-    br
-    | Cols: #{query.cols}
-
-  - let rows = Number(query.rows);
-  - let cols = Number(query.cols);
-
-  - if (!Number.isInteger(rows) || !Number.isInteger(cols))
-    p Invalid input: Rows and cols must be integers.
-  - else if (rows < 3 || rows > 13)
-    p Invalid input: Rows must be between 3 and 13.
-  - else if (cols < 3 || cols > 13)
-    p Invalid input: Cols must be between 3 and 13.
-  - else
+  h1= title2 
+  p Welcome to grid web applications.
+  p Rows: #{query.rows}
+  p Cols: #{query.cols}
+ 
+  - let rows = parseInt(query.rows);
+  - let cols = parseInt(query.cols);
+ 
+  if (Number.isNaN(rows) || Number.isNaN(cols) || rows < 3 || cols < 3 || rows > 13 || cols > 13)
+    p Invalid input. Please provide valid rows and cols values between 3 and 13.
+  else
     table#outer
       - for (let i = 0; i < rows; i++)
         tr#middle
           - for (let j = 0; j < cols; j++)
-            td= Math.min(i + 1, j + 1)
+            - let value = (i === j) ? 1 : (i === j + 1) ? 2 : (i === j - 1) ? i : 0
+            td= value
