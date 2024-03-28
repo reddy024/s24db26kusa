@@ -10,6 +10,7 @@ var foodsRouter = require('./routes/foods');
 var gridRouter = require('./routes/grid');
 
 
+
 var app = express();
 
 // view engine setup
@@ -26,6 +27,9 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/foods', foodsRouter);
 app.use('/grid', gridRouter);
+app.get('/randomitem', function (req, res) {
+  res.render('randomitem', { title: 'A random item' });
+});
 
 // catch 404 and forward to error handler
 // catch 404 and forward to error handler

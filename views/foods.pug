@@ -1,12 +1,25 @@
 extends layout
 
 block content
-  h1= title3 
+  h1= title
   .container-fluid
     .row
       -
-      for food in foods 
+      for food in foods
         .col-sm-2
-          h3= `Name: ${food.name}`
-          p= `Category: ${food.category}`
-          p= `Price: ${food.price}`
+          h3= `foodName: ${food.foodName}`
+          p= `category: ${food.category}`
+          p= `price: ${food.price}`
+  br
+  h5= 'Buy'
+
+  div(class="container-fluid")
+    each food, index in foods
+      div(class="row", onclick=`buy(${index})`)
+        div(class="col-sm-2")
+          br
+          | food #{index}: #{food.foodName} category: #{food.category} price: #{food.price}
+  script.
+    function buy(price){
+      alert('You purchased fooditem ' + price);
+    }
