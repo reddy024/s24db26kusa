@@ -8,7 +8,7 @@ const foods = [
 ];
 
 router.get('/', (req, res) => {
-  res.render('foods', { title: 'Search results', foods });
+  res.render('foods', { title: 'Search results for food', foods });
 });
 
 module.exports = router;
