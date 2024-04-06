@@ -1,14 +1,14 @@
-var express = require('express');
+const express = require('express');
+const food_controllers= require('../controllers/foods');
 var router = express.Router();
 
-const foods = [
-  { name: 'biryani', category: 'meals', price: '500' },
-  { name: 'icecream', category: 'refreshing items', price: '400' },
-  { name: 'halwa', category: 'sweets', price: '1000' },
-];
+/* GET costumes */
+router.get('/', food_controllers.foods_view_all_Page);
 
-router.get('/', (req, res) => {
-  res.render('foods', { title: 'Search results for food', foods });
-});
+// GET request for one food.
+router.get('/foods/:id', food_controllers.foods_detail);
+
+// PUT request for updating a specific car
+router.put('/foods/:id', food_controllers.foods_update_put);
 
 module.exports = router;
