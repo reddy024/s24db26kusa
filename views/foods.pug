@@ -5,13 +5,11 @@ block content
   - let items = results
   div(class="container-fluid")
     div(class="row")
-      each item, index in items  
-        div(class="col-sm-2", onclick=`buy(${index})`) 
-          p #{item.foodName} 
-          p #{item.category}
-          p #{item.price} 
-
+      each item in items 
+          -let destination = `dispatch(\"/costumes/update?id=${item._id}\")`
+          div(class="row-sm-2", class="m-1") Item #{item.foodName}(#{item.category}) is #{item.price}
+          button.btn( class="btn-primary ml-1", onclick= destination) Update
   script.
-    function buy(index) {
-      alert("You purchased item " + index);
+    function dispatch(path){
+    window.location.href=path
     }
