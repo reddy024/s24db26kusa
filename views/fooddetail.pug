@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1= title
+  - let foodid = toShow._id
+  - let foodName = toShow.foodName
+  - let category = toShow.category
+  - let price = toShow.price
+  div
+    div.row
+      div(class='foodsAttr mr-3') Costume ID is:
+      div #{foodid}
+    div.row
+      div(class='foodsAttr mr-3') foodName  is:
+      div #{foodName}
+    div.row
+      div(class='foodsAttr mr-3')  category is:
+      div #{category}
+    div.row
+      div(class='foodsAttr mr-3')  food price is:
+      div #{price}

@@ -92,3 +92,68 @@ exports.foods_update_put = async function(req, res) {
         res.send(`{"error": ${err}: Update for id ${req.params.id} failed`);
     }
 };
+// Handle Costume delete on DELETE.
+exports.foods_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await foods.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+    };
+// Handle a show one view with id specified by query
+exports.foods_view_one_Page = async function(req, res) {
+    console.log("single view for id " + req.query.id)
+    try{
+    result = await foods.findById( req.query.id)
+    res.render('fooddetail',
+    { title: 'food Detail', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
+// Handle building the view for creating a costume.
+// No body, no in path parameter, no query.
+// Does not need to be async
+exports.foods_create_Page = function(req, res) {
+    console.log("create view")
+    try{
+    res.render('foodcreate', { title: 'food Create'});
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
+
+// Handle building the view for updating a costume.
+// query provides the id
+exports.foods_update_Page = async function(req, res) {
+    console.log("update view for item "+req.query.id)
+    try{
+    let result = await foods.findById(req.query.id)
+    res.render('foodupdate', { title: 'food Update', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
+// Handle a delete one view with id from query
+exports.foods_delete_Page = async function(req, res) {
+    console.log("Delete view for id " + req.query.id)
+    try{
+    result = await foods.findById(req.query.id)
+    res.render('fooddelete', { title: 'food Delete', toShow:
+    result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
