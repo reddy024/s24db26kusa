@@ -1,20 +1,12 @@
 extends layout
 
 block content
-  h1= title1 
-  p Welcome to #{title}
-  p Rakesh Page   
-  br
-  button#button(onclick="double()") button 
-  p
-    div(id='double') Two to the power value #{power} is #{value}.
-  script.
-    console.log("running on http://localhost:3000/")
-  script.
-    var value = 0;
-    var power = 1;
-    function double() {
-      value += 1;
-      power *= 2;
-      document.getElementById('double').innerText = "Two to the power " + power + " is " + value + ".";
-    }
+  if (!user)
+    a(href="/login") Login
+    br
+    a(href="/register") Register
+  if (user)
+    p You are currently logged in as #{user.username}
+    a(href="/foods") Take me to costumes
+    br
+    a(href="/logout") Logout
